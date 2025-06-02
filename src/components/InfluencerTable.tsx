@@ -270,29 +270,6 @@ export const InfluencerTable = () => {
             </table>
           </div>
         </ScrollArea>
-        
-        {/* Projected Performance Panel */}
-        <div className="mt-6 bg-[#2A2A2A] rounded-lg p-4 border border-gray-700">
-          <h4 className="text-sm font-medium text-white mb-3">Projected Performance - November 2024</h4>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="text-center">
-              <p className="text-lg font-bold text-primary">47</p>
-              <p className="text-xs text-gray-400">Posts Scheduled</p>
-            </div>
-            <div className="text-center">
-              <p className="text-lg font-bold text-primary">€1.2M</p>
-              <p className="text-xs text-gray-400">Projected Sales</p>
-            </div>
-            <div className="text-center">
-              <p className="text-lg font-bold text-primary">89K</p>
-              <p className="text-xs text-gray-400">Expected Conversions</p>
-            </div>
-            <div className="text-center">
-              <p className="text-lg font-bold text-primary">23%</p>
-              <p className="text-xs text-gray-400">Available Capacity</p>
-            </div>
-          </div>
-        </div>
       </CardContent>
     </Card>
   );
