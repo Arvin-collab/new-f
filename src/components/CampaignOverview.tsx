@@ -123,101 +123,26 @@ export const CampaignOverview = () => {
           })}
         </div>
 
-        {/* Influencer Performance Table */}
-        <div className="bg-[#2A2A2A] rounded-lg border border-gray-700">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-gray-600">
-                  <th className="text-left py-4 px-4 text-sm font-medium text-gray-400">Influencer</th>
-                  <th className="text-center py-4 px-4 text-sm font-medium text-gray-400">Conversions</th>
-                  <th className="text-center py-4 px-4 text-sm font-medium text-gray-400">CAC</th>
-                  <th className="text-center py-4 px-4 text-sm font-medium text-gray-400">Posts Booked</th>
-                  <th className="text-center py-4 px-4 text-sm font-medium text-gray-400">Posts Live</th>
-                  <th className="text-center py-4 px-4 text-sm font-medium text-gray-400">Activations</th>
-                  <th className="text-center py-4 px-4 text-sm font-medium text-gray-400">Tier</th>
-                </tr>
-              </thead>
-              <tbody>
-                {influencers.map((influencer, index) => (
-                  <tr key={index} className="border-b border-gray-700 hover:bg-[#3A3A3A] transition-colors">
-                    <td className="py-4 px-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
-                          <span className="text-xs text-white">{influencer.name.charAt(0)}</span>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-white">{influencer.name}</p>
-                          <p className="text-xs text-gray-400">{influencer.handle}</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="py-4 px-4 text-center">
-                      <div className="flex items-center justify-center gap-2">
-                        <span className="text-sm font-medium text-white">
-                          {influencer.conversions.toLocaleString()}
-                        </span>
-                        {influencer.trend === 'up' ? (
-                          <TrendingUp className="w-4 h-4 text-green-400" />
-                        ) : (
-                          <TrendingDown className="w-4 h-4 text-red-400" />
-                        )}
-                      </div>
-                    </td>
-                    <td className="py-4 px-4 text-center">
-                      <div>
-                        <span className="text-sm font-medium text-white">
-                          €{influencer.cac.toFixed(2)}
-                        </span>
-                        <p className={`text-xs ${
-                          influencer.cacVariance < 0 ? 'text-green-400' : 'text-red-400'
-                        }`}>
-                          {influencer.cacVariance > 0 ? '+' : ''}{influencer.cacVariance}%
-                        </p>
-                      </div>
-                    </td>
-                    <td className="py-4 px-4 text-center">
-                      <div className="flex justify-center">
-                        <div className="w-12 bg-gray-700 rounded-full h-2">
-                          <div 
-                            className="h-2 rounded-full bg-primary"
-                            style={{ width: `${(influencer.postsBooked / influencer.postsTotal) * 100}%` }}
-                          ></div>
-                        </div>
-                      </div>
-                      <span className="text-xs text-gray-400">{influencer.postsBooked}</span>
-                    </td>
-                    <td className="py-4 px-4 text-center">
-                      <div className="flex justify-center">
-                        <div className="w-12 bg-gray-700 rounded-full h-2">
-                          <div 
-                            className="h-2 rounded-full bg-primary"
-                            style={{ width: `${(influencer.postsLive / influencer.postsTotal) * 100}%` }}
-                          ></div>
-                        </div>
-                      </div>
-                      <span className="text-xs text-gray-400">{influencer.postsLive}</span>
-                    </td>
-                    <td className="py-4 px-4 text-center">
-                      <div className="flex justify-center">
-                        <div className="w-12 bg-gray-700 rounded-full h-2">
-                          <div 
-                            className="h-2 rounded-full bg-primary"
-                            style={{ width: `${influencer.activations}%` }}
-                          ></div>
-                        </div>
-                      </div>
-                      <span className="text-xs text-gray-400">{influencer.activations}%</span>
-                    </td>
-                    <td className="py-4 px-4 text-center">
-                      <Badge className={`text-xs ${getTierBadge(influencer.tier)}`}>
-                        {influencer.tier}
-                      </Badge>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        {/* Projected Performance Panel */}
+        <div className="bg-[#2A2A2A] rounded-lg p-6 border border-gray-700">
+          <h4 className="text-sm font-medium text-white mb-4">Projected Performance - November 2024</h4>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-primary">47</p>
+              <p className="text-xs text-gray-400">Posts Scheduled</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-primary">€1.2M</p>
+              <p className="text-xs text-gray-400">Projected Sales</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-primary">89K</p>
+              <p className="text-xs text-gray-400">Expected Conversions</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-primary">23%</p>
+              <p className="text-xs text-gray-400">Available Capacity</p>
+            </div>
           </div>
         </div>
       </div>
