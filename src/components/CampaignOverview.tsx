@@ -96,6 +96,27 @@ export const CampaignOverview = () => {
 
   return (
     <div className="space-y-6">
+
+      {/* Projected Performance Summary */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="text-center">
+          <p className="text-2xl font-bold text-white">47</p>
+          <p className="text-xs text-gray-400">Posts Scheduled</p>
+        </div>
+        <div className="text-center">
+          <p className="text-2xl font-bold text-white">€1.2M</p>
+          <p className="text-xs text-gray-400">Projected Sales</p>
+        </div>
+        <div className="text-center">
+          <p className="text-2xl font-bold text-white">89K</p>
+          <p className="text-xs text-gray-400">Expected Conversions</p>
+        </div>
+        <div className="text-center">
+          <p className="text-2xl font-bold text-white">23%</p>
+          <p className="text-xs text-gray-400">Available Capacity</p>
+        </div>
+      </div>
+
       <div>
         <h2 className="text-xl font-semibold text-white mb-4">Campaign Overview & Performance</h2>
         
@@ -121,29 +142,6 @@ export const CampaignOverview = () => {
               </div>
             );
           })}
-        </div>
-
-        {/* Projected Performance Panel */}
-        <div className="bg-[#2A2A2A] rounded-lg p-6 border border-gray-700">
-          <h4 className="text-sm font-medium text-white mb-4">Projected Performance - November 2024</h4>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <p className="text-2xl font-bold text-primary">47</p>
-              <p className="text-xs text-gray-400">Posts Scheduled</p>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-bold text-primary">€1.2M</p>
-              <p className="text-xs text-gray-400">Projected Sales</p>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-bold text-primary">89K</p>
-              <p className="text-xs text-gray-400">Expected Conversions</p>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-bold text-primary">23%</p>
-              <p className="text-xs text-gray-400">Available Capacity</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
