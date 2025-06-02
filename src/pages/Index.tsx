@@ -4,7 +4,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Filter } from "lucide-react";
 import { GlobalHeader } from "@/components/GlobalHeader";
 import { CampaignOverview } from "@/components/CampaignOverview";
-import { BudgetOverview } from "@/components/BudgetOverview";
 import { InfluencerTable } from "@/components/InfluencerTable";
 
 const Index = () => {
@@ -74,11 +73,6 @@ const Index = () => {
           {/* Campaign Overview */}
           <div>
             <CampaignOverview />
-          </div>
-          
-          {/* Budget Overview */}
-          <div>
-            <BudgetOverview />
           </div>
           
           {/* Influencer Table */}
