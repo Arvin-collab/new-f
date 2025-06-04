@@ -3,15 +3,29 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Settings, Search } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const GlobalHeader = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+  };
+
+  const isActiveRoute = (path: string) => {
+    if (path === "/" && location.pathname === "/") return true;
+    if (path !== "/" && location.pathname.startsWith(path)) return true;
+    return false;
+  };
+
   return (
     <header className="bg-[#1A1A1A] border-b border-gray-800">
       <div className="px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Left: Branding & Navigation */}
           <div className="flex items-center space-x-8">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 cursor-pointer" onClick={() => handleNavigation("/")}>
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <img src="/placeholder.svg" alt="Brand Influence Logo" className="w-6 h-6" />
               </div>
@@ -19,21 +33,46 @@ export const GlobalHeader = () => {
             </div>
             
             <nav className="hidden md:flex space-x-6">
-              <a href="#" className="text-primary font-medium border-b-2 border-primary pb-1">
+              <button 
+                onClick={() => handleNavigation("/")}
+                className={`font-medium transition-colors pb-1 ${
+                  isActiveRoute("/") 
+                    ? "text-primary border-b-2 border-primary" 
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
                 Dashboard
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              </button>
+              <button 
+                onClick={() => handleNavigation("/campaigns")}
+                className={`font-medium transition-colors pb-1 ${
+                  isActiveRoute("/campaigns") 
+                    ? "text-primary border-b-2 border-primary" 
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
                 Campaigns
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              </button>
+              <button
+                onClick={() => handleNavigation("/influencers")}
+                className={`font-medium transition-colors pb-1 ${
+                  isActiveRoute("/influencers") 
+                    ? "text-primary border-b-2 border-primary" 
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
                 Influencers
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              </button>
+              <button 
+                onClick={() => handleNavigation("/analytics")}
+                className={`font-medium transition-colors pb-1 ${
+                  isActiveRoute("/analytics") 
+                    ? "text-primary border-b-2 border-primary" 
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
                 Analytics
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                Settings
-              </a>
+              </button>
             </nav>
           </div>
           

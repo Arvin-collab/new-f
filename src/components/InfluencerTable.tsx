@@ -6,10 +6,14 @@ import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ChevronDown, TrendingUp, TrendingDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const InfluencerTable = () => {
+  const navigate = useNavigate();
+
   const influencers = [
     {
+      id: "emma-foodie",
       name: "Emma Foodie",
       handle: "@emmafoodie",
       avatar: "/placeholder.svg",
@@ -27,6 +31,7 @@ export const InfluencerTable = () => {
       tier: "Top"
     },
     {
+      id: "nordic-chef",
       name: "Nordic Chef", 
       handle: "@nordicchef",
       avatar: "/placeholder.svg",
@@ -44,6 +49,7 @@ export const InfluencerTable = () => {
       tier: "Average"
     },
     {
+      id: "kitchen-stories",
       name: "Kitchen Stories",
       handle: "@kitchenstories_uk",
       avatar: "/placeholder.svg", 
@@ -61,6 +67,7 @@ export const InfluencerTable = () => {
       tier: "Top"
     },
     {
+      id: "french-cuisine",
       name: "French Cuisine",
       handle: "@frenchcuisine",
       avatar: "/placeholder.svg",
@@ -78,6 +85,7 @@ export const InfluencerTable = () => {
       tier: "Poor"
     },
     {
+      id: "healthy-eats",
       name: "Healthy Eats",
       handle: "@healthyeats_de",
       avatar: "/placeholder.svg",
@@ -95,6 +103,7 @@ export const InfluencerTable = () => {
       tier: "Top"
     },
     {
+      id: "vegan-chef-co",
       name: "Vegan Chef Co",
       handle: "@veganchefco",
       avatar: "/placeholder.svg",
@@ -130,6 +139,10 @@ export const InfluencerTable = () => {
       Poor: "bg-red-900 text-red-300"
     };
     return styles[tier as keyof typeof styles];
+  };
+
+  const handleViewProfile = (influencerId: string) => {
+    navigate(`/influencers/${influencerId}`);
   };
 
   return (
@@ -170,6 +183,7 @@ export const InfluencerTable = () => {
                   <th className="text-left py-3 px-2 text-sm font-medium text-gray-400">Posts Live</th>
                   <th className="text-left py-3 px-2 text-sm font-medium text-gray-400">Activations</th>
                   <th className="text-left py-3 px-2 text-sm font-medium text-gray-400">Tier</th>
+                  <th className="text-left py-3 px-2 text-sm font-medium text-gray-400">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -263,6 +277,15 @@ export const InfluencerTable = () => {
                       <Badge className={getTierBadge(influencer.tier)}>
                         {influencer.tier}
                       </Badge>
+                    </td>
+                    <td className="py-4 px-2">
+                      <Button 
+                        size="sm" 
+                        className="bg-blue-600 hover:bg-blue-700"
+                        onClick={() => handleViewProfile(influencer.id)}
+                      >
+                        View Profile
+                      </Button>
                     </td>
                   </tr>
                 ))}
